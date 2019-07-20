@@ -1,12 +1,12 @@
 import React from "react";
-// import Books from "./pages/Portal";
+import Books from "./pages/Portal";
 import Nav from "./components/Nav";
 
 function App() {
     return (
         <div>
             <Nav />
-            {/* <Books /> */}
+            <Books />
         </div>
     )
 }

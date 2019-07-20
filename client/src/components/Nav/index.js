@@ -14,6 +14,9 @@ function Nav() {
                     <li className="nav-item">
                         <a className="nav-link" href="/">Payments</a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/">Maintence Request</a>
+                    </li>
                 </ul>
             </div>
         </nav>
