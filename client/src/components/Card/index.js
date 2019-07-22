@@ -3,7 +3,9 @@ import React from "react";
 export function CardTitle({ children }) {
     return (
         <div className="card text-center">
-            <div className="card-body">
+            <div style={{backgroundColor: "#383838", color: "white"}}
+            
+            className="card-body">
                 <div className="card-title">{children}</div>
             </div>
         </div>

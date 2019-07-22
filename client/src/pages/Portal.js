@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { CardBody, CardTitle, CardButton } from "../components/Card";
+import { Jumpotron } from "../components/Jumbotron"
 
 class Portal extends Component {
     state = {
@@ -10,6 +11,9 @@ class Portal extends Component {
     render() {
         return (
             <Container>
+                <Jumpotron>
+                    Welcome Resident!
+                </Jumpotron>
                 <Row>
                     <Col className="col-sm-6">
                         <CardTitle>
