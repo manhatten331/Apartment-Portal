@@ -32,6 +32,16 @@ class Portal extends Component {
                         </CardTitle>
                     </Col>
                 </Row>
+                <Row>
+                    <Col className="col-sm-12">
+                        <CardTitle>
+                            <CardBody>
+                                Contact Us
+                            </CardBody>
+                            <CardButton href="/"></CardButton>
+                        </CardTitle>
+                    </Col>
+                </Row>
             </Container>
         )
     }
