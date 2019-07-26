@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/manhatten331/Apartment-Portal#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
+    "nodemon": "^1.19.1",
+    "sequelize": "^5.10.3"
   }
 }
