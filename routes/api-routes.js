@@ -6,7 +6,7 @@ const db = require("../models");
 process.env.SECRET_KEY = 'secret'
 
 module.exports = function (app) {
-    app.post("/register", (req, res) => {
+    app.post("/api/register", (req, res) => {
         const newUser = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -45,7 +45,7 @@ module.exports = function (app) {
             })
     })
 
-    app.post("/login", (req, res) => {
+    app.post("/api/login", (req, res) => {
         db.apartmentPortal.findOne({
             where: {
                 email: req.body.email
@@ -67,7 +67,7 @@ module.exports = function (app) {
             })
     })
 
-    app.get("/profile" , (req, res) => {
+    app.get("/api/profile" , (req, res) => {
         const decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
         db.apartmentPortal.findOne({

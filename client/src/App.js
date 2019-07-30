@@ -1,13 +1,20 @@
 import React from "react";
-import Books from "./pages/Portal";
-import Nav from "./components/Nav";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import Portal from "./pages/Portal";
+import Login from "./pages/Login"
+
 
 function App() {
     return (
-        <div>
-            <Nav />
-            <Books />
-        </div>
+        <Router>
+            <div>
+                <Switch>
+                    <Route exact path="/" component={Login}/>
+                    <Route exact path="/portal" component={Portal} />
+                </Switch>
+            </div>
+        </Router>
+
     )
 }
 
