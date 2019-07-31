@@ -7,6 +7,7 @@ const Register = ({ onSubmit, setNewUser }) => {
 
     return (
         <form onSubmit={onSubmit}>
+            <h3>Register</h3>
             <div className="form-group">
                 <label for="fname">First Name:</label>
                 <input type="text" className="form-control" placeholder="First name" name="firstName" />
