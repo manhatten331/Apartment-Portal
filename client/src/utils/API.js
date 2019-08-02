@@ -3,13 +3,7 @@ import axios from "axios";
 export default {
 
     register: newUser => {
-        return axios.post("/api/register", {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            email: newUser.email,
-            password: newUser.password,
-            phoneNumber: newUser.phoneNumber
-        })
+        return axios.post("/api/register", newUser)
         .then(Response => {
             console.log(Response)
             console.log("_______________")
