@@ -4,15 +4,15 @@ export default {
 
     register: newUser => {
         return axios.post("/api/register", newUser)
-        .then(Response => {
-            console.log(Response)
-            console.log("_______________")
-            console.log("Registered!!!!!!")
-        })
+        // .then(Response => {
+        //     console.log(Response)
+        //     console.log("_______________")
+        //     console.log("Registered!!!!!!")
+        // })
     },
 
     login: user => {
-        return axios.post("api/login", {
+        return axios.post("/api/login", {
             email: user.email,
             password: user.password
         })

@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 // import { withRouter } from "react-router-dom";
 // import SignIn from "../components/SignIn";
 // import Register from "../components/Register";
-// import API from "../utils/API"
+import API from "../utils/API"
 
 class Login extends Component {
     state = {
-        isLogged: false
+        isLogged: false,
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        phoneNumber: ""
     }
-
-    
 
     changeForm = () => {
         if (this.state.isLogged === false) {
@@ -18,6 +21,50 @@ class Login extends Component {
             this.setState({ isLogged: false })
         }
     }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    onRegistration = event => {
+        event.preventDefault()
+
+        // console.log("inside onRegistration()");
+
+        const newUser = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            phoneNumber: this.state.phoneNumber
+        }
+
+        console.log(newUser);
+        console.log("__________________")
+        // console.log(localStorage)
+        console.log("__________________")
+
+        API.register(newUser).then(res => {
+            console.log(res.data);
+            if (res.data === "User already exists"){
+                console.log(res.data);
+                this.props.history.push("/")
+                this.setState({ isLogged: false })
+                alert("User Already Exist Please Login")
+            } else {
+                this.props.history.push("/portal")
+            }
+            
+        })
+    }
+
+    onLogin = event => {
+        event.preventDefault()
+    }
+
 
     // const { firstName, lastName, email, password, phoneNumber } = event.target.elements;
 
@@ -41,11 +88,25 @@ class Login extends Component {
                 <h3>SignIn</h3>
                 <div className="form-group">
                     <label htmlFor="fname">Email:</label>
-                    <input type="email" className="form-control" placeholder="Email" name="email" />
+                    <input 
+                    type="email" 
+                    className="form-control" 
+                    placeholder="Email" 
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleInputChange} 
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Password:</label>
-                    <input type="password" className="form-control" placeholder="Password" name="password" />
+                    <input 
+                    type="password" 
+                    className="form-control" 
+                    placeholder="Password" 
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    />
                 </div>
                 <button type="submit" className="btn btn-success">SignIn</button>
                 <h3>Don't have an account?</h3>
@@ -54,27 +115,63 @@ class Login extends Component {
         )
 
         const Register = (
-            <form>
+            <form onSubmit={this.onRegistration}>
                 <h3>Register</h3>
                 <div className="form-group">
                     <label htmlFor="fname">First Name:</label>
-                    <input type="text" className="form-control" placeholder="First name" name="firstName" />
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder="First name" 
+                    name="firstName"
+                    value={this.state.firstName}
+                    onChange={this.handleInputChange}
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Last Name:</label>
-                    <input type="text" className="form-control" placeholder="Last name" name="lastName" />
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder="Last name" 
+                    name="lastName"
+                    value={this.state.lastName}
+                    onChange={this.handleInputChange} 
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Email:</label>
-                    <input type="email" className="form-control" placeholder="Email" name="email" />
+                    <input 
+                    type="email" 
+                    className="form-control" 
+                    placeholder="Email" 
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleInputChange} 
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Password:</label>
-                    <input type="password" className="form-control" placeholder="Password" name="password" />
+                    <input 
+                    type="password" 
+                    className="form-control" 
+                    placeholder="Password" 
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange} 
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Phone Number: 123-123-1234</label>
-                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" className="form-control" placeholder="Cell, Home, or Work Phone Number" name="phoneNumber" />
+                    <input 
+                    type="tel" 
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                    className="form-control" 
+                    placeholder="Cell, Home, or Work Phone Number" 
+                    name="phoneNumber"
+                    value={this.state.phoneNumber}
+                    onChange={this.handleInputChange} 
+                    />
                 </div>
                 <button type="submit" className="btn btn-success">Register</button>
                 <button type="button" className="btn btn-success" onClick={this.changeForm}>Return to Login</button>
@@ -83,7 +180,6 @@ class Login extends Component {
 
         return (
             <div>
-                {/* change newUser to fit the state (this.state newUser = false) */}
                 {!this.state.isLogged ? (SignIn) : (Register)}
             </div>
         )
@@ -104,11 +200,11 @@ export default Login;
 //         const { firstName, lastName, email, password, phoneNumber } = event.target.elements;
 
 //         const creatingUser = {
-//             firstName: firstName.value,
-//             lastName: lastName.value,
-//             email: email.value,
-//             password: password.value,
-//             phoneNumber: phoneNumber
+//             firstName:
+//             lastName:
+//             email:
+//             password:
+//             phoneNumber:
 //         }
 
 //         API.register(creatingUser).then(res => {

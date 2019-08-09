@@ -21,6 +21,7 @@ module.exports = function (app) {
             }
         })
             .then(user => {
+                // If user doesn't exist, create new user
                 if (!user) {
                     const hash = bcrypt.hashSync(newUser.password, 10)
                     newUser.password = hash
@@ -32,12 +33,14 @@ module.exports = function (app) {
                             });
 
                             res.json({ token: token })
+                            // res.json(currentUser);
                         })
                         .catch(err => {
                             res.send('error: ' + err)
                         })
                 } else {
-                    res.json({ error: "User already exists" })
+                    res.json("User already exists")
+
                 }
             })
             .catch(err => {
@@ -45,7 +48,14 @@ module.exports = function (app) {
             })
     })
 
-    app.post("/api/login", (req, res) => {
+    // app.get("/api/allUsers", (req, res) => {
+    //     db.apartmentPortal.findAll()
+    //         .then(entries => {
+    //             res.json(entries);
+    //         });
+    // })
+
+    app.post("/login", (req, res) => {
         db.apartmentPortal.findOne({
             where: {
                 email: req.body.email
