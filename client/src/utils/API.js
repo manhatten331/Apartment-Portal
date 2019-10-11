@@ -16,12 +16,16 @@ export default {
             email: user.email,
             password: user.password
         })
-        .then(Response => {
-            localStorage.setItem('usertoken', Response.data)
-            return Response.data
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        // .then(Response => {
+        //     localStorage.setItem('usertoken', Response.data)
+        //     return Response.data
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
+    },
+
+    getUser: () => {
+        return axios.get("/api/portal")
     }
 }

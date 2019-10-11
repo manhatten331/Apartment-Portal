@@ -51,18 +51,39 @@ class Login extends Component {
             console.log(res.data);
             if (res.data === "User already exists"){
                 console.log(res.data);
-                this.props.history.push("/")
-                this.setState({ isLogged: false })
-                alert("User Already Exist Please Login")
+                window.confirm(res.data)
+                // this.props.history.push("/")
+                this.setState({ isLogged: false }, () => {
+                    this.props.history.push("/")
+                    // alert("User Already Exist Please Login")
+                })
+                // alert("User Already Exist Please Login")
             } else {
                 this.props.history.push("/portal")
             }
             
-        })
+        }) 
     }
 
     onLogin = event => {
         event.preventDefault()
+        const currentUser = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        API.login(currentUser).then(res => {
+            if (res.data === "User does not exist") {
+                window.confirm(res.data)
+                this.setState({ isLogged: true }, () =>{
+                    this.props.history.push("/")
+                })
+            } else {
+                console.log(res.data);
+                this.props.history.push("/portal");
+            }
+            
+        })
     }
 
 
@@ -108,7 +129,7 @@ class Login extends Component {
                     onChange={this.handleInputChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-success">SignIn</button>
+                <button type="submit" className="btn btn-success" onClick={this.onLogin}>SignIn</button>
                 <h3>Don't have an account?</h3>
                 <button type="button" className="btn btn-success" onClick={this.changeForm}>Create Account</button>
             </form>
@@ -126,6 +147,7 @@ class Login extends Component {
                     name="firstName"
                     value={this.state.firstName}
                     onChange={this.handleInputChange}
+                    required
                     />
                 </div>
                 <div className="form-group">
@@ -136,7 +158,8 @@ class Login extends Component {
                     placeholder="Last name" 
                     name="lastName"
                     value={this.state.lastName}
-                    onChange={this.handleInputChange} 
+                    onChange={this.handleInputChange}
+                    required 
                     />
                 </div>
                 <div className="form-group">
@@ -147,7 +170,8 @@ class Login extends Component {
                     placeholder="Email" 
                     name="email"
                     value={this.state.email}
-                    onChange={this.handleInputChange} 
+                    onChange={this.handleInputChange}
+                    required 
                     />
                 </div>
                 <div className="form-group">
@@ -159,6 +183,7 @@ class Login extends Component {
                     name="password"
                     value={this.state.password}
                     onChange={this.handleInputChange} 
+                    required
                     />
                 </div>
                 <div className="form-group">
@@ -171,6 +196,7 @@ class Login extends Component {
                     name="phoneNumber"
                     value={this.state.phoneNumber}
                     onChange={this.handleInputChange} 
+                    required
                     />
                 </div>
                 <button type="submit" className="btn btn-success">Register</button>

@@ -23,8 +23,8 @@ module.exports = function (app) {
             .then(user => {
                 // If user doesn't exist, create new user
                 if (!user) {
-                    const hash = bcrypt.hashSync(newUser.password, 10)
-                    newUser.password = hash
+                    // const hash = bcrypt.hashSync(newUser.password, 10)
+                    // newUser.password = hash
 
                     db.apartmentPortal.create(newUser)
                         .then(currentUser => {
@@ -48,52 +48,83 @@ module.exports = function (app) {
             })
     })
 
-    // app.get("/api/allUsers", (req, res) => {
-    //     db.apartmentPortal.findAll()
-    //         .then(entries => {
-    //             res.json(entries);
-    //         });
+    app.get("/api/portal", (req, res) => {
+        db.apartmentPortal.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
+            .then( currentUser => {
+                if (currentUser) {
+                    res.json(currentUser)
+                } else {
+                    res.send("It didn't work bud")
+                }
+            })
+            
+            .catch(err => {
+                res.send('error: ' + err);
+            })
+    });
+
+    // app.post("/login", (req, res) => {
+    //     db.apartmentPortal.findOne({
+    //         where: {
+    //             email: req.body.email
+    //         }
+    //     })
+    //         .then(currentUser => {
+    //             if (bcrypt.compareSync(req.body.password, currentUser.password)) {
+    //                 let token = jwt.sign(currentUser.dataValues, process.env.SECRET_KEY, {
+    //                     expiresIn: 1440
+    //                 });
+
+    //                 res.json({ token: token })
+    //             } else {
+    //                 res.send("User does not exist")
+    //             }
+    //         })
+    //         .catch(err => {
+    //             res.send('error: ' + err)
+    //         })
     // })
 
-    app.post("/login", (req, res) => {
+    app.post("/api/login", (req,res) => {
         db.apartmentPortal.findOne({
             where: {
                 email: req.body.email
             }
         })
             .then(currentUser => {
-                if (bcrypt.compareSync(req.body.password, currentUser.password)) {
-                    let token = jwt.sign(currentUser.dataValues, process.env.SECRET_KEY, {
-                        expiresIn: 1440
-                    });
-
-                    res.json({ token: token })
-                } else {
-                    res.send("User does not exist")
-                }
-            })
-            .catch(err => {
-                res.send('error: ' + err)
-            })
-    })
-
-    app.get("/api/profile" , (req, res) => {
-        const decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
-
-        db.apartmentPortal.findOne({
-            where: {
-                id: decoded.id
-            }
-        })
-            .then(currentUser => {
                 if (currentUser) {
-                    res.json(currentUser)
+                     res.json(currentUser)
                 } else {
                     res.send("User does not exist")
                 }
             })
+            
             .catch(err => {
-                res.send("error: " + err)
+                res.send('error: ' + err);
             })
     })
+
+    // app.get("/api/profile" , (req, res) => {
+    //     const decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    //     db.apartmentPortal.findOne({
+    //         where: {
+    //             id: decoded.id
+    //         }
+    //     }) 
+    //         .then(currentUser => {
+    //             if (currentUser) {
+    //                 res.json(currentUser)
+    //             } else {
+    //                 res.send("User does not exist")
+    //             }
+    //         })
+    //         .catch(err => {
+    //             res.send("error: " + err)
+    //         })
+    // })
 }

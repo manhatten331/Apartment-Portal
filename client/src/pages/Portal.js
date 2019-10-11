@@ -3,10 +3,22 @@ import { Col, Row, Container } from "../components/Grid";
 import { CardBody, CardTitle, CardButton } from "../components/Card";
 import { Jumpotron } from "../components/Jumbotron"
 import  Nav  from "../components/Nav"
+import API from "../utils/API"
 
 class Portal extends Component {
     state = {
+        currentUser: ""
+    }
 
+    componentDidMount() {
+        this.loadUser()
+        console.log(this.state.currentUser)
+    }
+
+    loadUser = () => {
+        API.getUser()
+            .then(res => this.setState({ currentUser: res.data }))
+            .catch(err => console.log(err))
     }
 
     render() {
