@@ -1,16 +1,58 @@
 body {
     text-align: center;
-    color: black;
-    background-image: url(../foliage.jpg);
-    background-attachment: fixed;
-    background-repeat: repeat-x;
+    background-image: url(../timbercreek.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
     animation: 20000s infinite linear;
 }
 
 form {
     display: inline-block;
-    box-shadow: 5px 5px 7px darkgray;
+    box-shadow: -1px 4px 28px 0 rgba(0, 0, 0, 0.75);
     padding: 30px;
-    background-color: white .9;
     margin: 70px;
+}
+
+#loginForm h3 {
+    color: white;
+    padding: .3em;
+}
+
+.btn {
+    width: 100%;
+}
+
+
+.Input {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    width: 90%;
+    display: inline-block;
+    background: transparent;
+    border-bottom: 2px solid white;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+input[type=email]::placeholder {
+    color: white;
+    size: 10px;
+}
+
+input[type=password]::placeholder {
+    color:white;
+    size: 10px;
+}
+
+.fa {
+    display: inline-block;
+
+}
+
+.loginDiv {
+    margin: 0 0 1em;
+    padding: .8em 1em;
+    /* background: rgba(255, 255, 255, 0.2): */
 }

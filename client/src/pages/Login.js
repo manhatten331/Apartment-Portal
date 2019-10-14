@@ -108,20 +108,21 @@ class Login extends Component {
                 <IntroNav />
                 <form id="loginForm">
                     <h3>Sign-In</h3>
-                    <div className="form-group">
+                    <div className="loginDiv">
+                        <i className="fas fa-envelope-square"></i> 
                         <input
+                            className="Input"
                             type="email"
-                            className="form-control"
-                            placeholder="Email"
+                            placeholder="Email Address"
                             name="email"
                             value={this.state.email}
                             onChange={this.handleInputChange}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="loginDiv">
                         <input
+                            className="Input"
                             type="password"
-                            className="form-control"
                             placeholder="Password"
                             name="password"
                             value={this.state.password}
@@ -206,7 +207,7 @@ class Login extends Component {
         )
 
         return (
-            <div>
+            <div className="test">
                 {!this.state.isLogged ? (SignIn) : (Register)}
             </div>
         )
