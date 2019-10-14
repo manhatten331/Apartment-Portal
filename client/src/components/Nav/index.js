@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css"
 
-function Nav() {
+export function Nav() {
     return (
         <nav className="navbar navbar-light navbar-expand-lg" style={{ backgroundColor: "#1E5631" }}>
             <a className="navbar-brand" href="/">Timber Creek</a>
@@ -23,4 +23,10 @@ function Nav() {
     )
 }
 
-export default Nav;
+export function IntroNav() {
+    return (
+        <nav className="navbar navbar-light navbar-expand-lg" style={{ backgroundColor: "#1E5631", justifyContent: "center" }}>
+            <a className="navbar-brand" href="/">Welcome to Timber Creek</a>
+        </nav>
+    )
+}

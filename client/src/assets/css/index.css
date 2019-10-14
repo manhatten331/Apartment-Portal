@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    color: black;
+    background-image: url(../foliage.jpg);
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+    animation: 20000s infinite linear;
+}
+
+form {
+    display: inline-block;
+    box-shadow: 5px 5px 7px darkgray;
+    padding: 30px;
+    background-color: white .9;
+    margin: 70px;
+}

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { IntroNav } from "../components/Nav"
 // import { withRouter } from "react-router-dom";
 // import SignIn from "../components/SignIn";
 // import Register from "../components/Register";
 import API from "../utils/API"
+import "../assets/css/index.css"
 
 class Login extends Component {
     state = {
@@ -49,20 +51,17 @@ class Login extends Component {
 
         API.register(newUser).then(res => {
             console.log(res.data);
-            if (res.data === "User already exists"){
+            if (res.data === "User already exists") {
                 console.log(res.data);
                 window.confirm(res.data)
-                // this.props.history.push("/")
                 this.setState({ isLogged: false }, () => {
                     this.props.history.push("/")
-                    // alert("User Already Exist Please Login")
                 })
-                // alert("User Already Exist Please Login")
             } else {
                 this.props.history.push("/portal")
             }
-            
-        }) 
+
+        })
     }
 
     onLogin = event => {
@@ -75,14 +74,14 @@ class Login extends Component {
         API.login(currentUser).then(res => {
             if (res.data === "User does not exist") {
                 window.confirm(res.data)
-                this.setState({ isLogged: true }, () =>{
+                this.setState({ isLogged: true }, () => {
                     this.props.history.push("/")
                 })
             } else {
                 console.log(res.data);
                 this.props.history.push("/portal");
             }
-            
+
         })
     }
 
@@ -105,98 +104,100 @@ class Login extends Component {
 
     render() {
         const SignIn = (
-            <form>
-                <h3>SignIn</h3>
-                <div className="form-group">
-                    <label htmlFor="fname">Email:</label>
-                    <input 
-                    type="email" 
-                    className="form-control" 
-                    placeholder="Email" 
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleInputChange} 
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="fname">Password:</label>
-                    <input 
-                    type="password" 
-                    className="form-control" 
-                    placeholder="Password" 
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                    />
-                </div>
-                <button type="submit" className="btn btn-success" onClick={this.onLogin}>SignIn</button>
-                <h3>Don't have an account?</h3>
-                <button type="button" className="btn btn-success" onClick={this.changeForm}>Create Account</button>
-            </form>
+            <div>
+                <IntroNav />
+                <form id="loginForm">
+                    <h3>Sign-In</h3>
+                    <div className="form-group">
+                        <input
+                            type="email"
+                            className="form-control"
+                            placeholder="Email"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleInputChange}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-success" onClick={this.onLogin}>SignIn</button>
+                    <h3>Don't have an account?</h3>
+                    <button type="button" className="btn btn-success" onClick={this.changeForm}>Create Account</button>
+                </form>
+            </div>
+
         )
 
         const Register = (
-            <form onSubmit={this.onRegistration}>
+            <form onSubmit={this.onRegistration} id="registerForm">
                 <h3>Register</h3>
                 <div className="form-group">
                     <label htmlFor="fname">First Name:</label>
-                    <input 
-                    type="text" 
-                    className="form-control" 
-                    placeholder="First name" 
-                    name="firstName"
-                    value={this.state.firstName}
-                    onChange={this.handleInputChange}
-                    required
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="First name"
+                        name="firstName"
+                        value={this.state.firstName}
+                        onChange={this.handleInputChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Last Name:</label>
-                    <input 
-                    type="text" 
-                    className="form-control" 
-                    placeholder="Last name" 
-                    name="lastName"
-                    value={this.state.lastName}
-                    onChange={this.handleInputChange}
-                    required 
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Last name"
+                        name="lastName"
+                        value={this.state.lastName}
+                        onChange={this.handleInputChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Email:</label>
-                    <input 
-                    type="email" 
-                    className="form-control" 
-                    placeholder="Email" 
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleInputChange}
-                    required 
+                    <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Email"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Password:</label>
-                    <input 
-                    type="password" 
-                    className="form-control" 
-                    placeholder="Password" 
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange} 
-                    required
+                    <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        required
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="fname">Phone Number: 123-123-1234</label>
-                    <input 
-                    type="tel" 
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
-                    className="form-control" 
-                    placeholder="Cell, Home, or Work Phone Number" 
-                    name="phoneNumber"
-                    value={this.state.phoneNumber}
-                    onChange={this.handleInputChange} 
-                    required
+                    <input
+                        type="tel"
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        className="form-control"
+                        placeholder="Cell, Home, or Work Phone Number"
+                        name="phoneNumber"
+                        value={this.state.phoneNumber}
+                        onChange={this.handleInputChange}
+                        required
                     />
                 </div>
                 <button type="submit" className="btn btn-success">Register</button>
