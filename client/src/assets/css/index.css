@@ -13,7 +13,7 @@ form {
     margin: 70px;
 }
 
-#loginForm h3 {
+#Form h3 {
     color: white;
     padding: .3em;
 }
@@ -22,6 +22,9 @@ form {
     width: 100%;
 }
 
+#registerBtn {
+    margin: .5em;
+}
 
 .Input {
     border: none;
@@ -46,13 +49,23 @@ input[type=password]::placeholder {
     size: 10px;
 }
 
+input[type=text]::placeholder {
+    color:white;
+    size: 10px;
+}
+
+input[type=tel]::placeholder {
+    color:white;
+    size: 10px;
+}
+
 .fa {
     display: inline-block;
 
 }
 
-.loginDiv {
-    margin: 0 0 1em;
+.inputDiv {
+    margin: 0 0 .8em;
     padding: .8em 1em;
     /* background: rgba(255, 255, 255, 0.2): */
 }

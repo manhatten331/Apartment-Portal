@@ -106,10 +106,10 @@ class Login extends Component {
         const SignIn = (
             <div>
                 <IntroNav />
-                <form id="loginForm">
+                <form id="Form">
                     <h3>Sign-In</h3>
-                    <div className="loginDiv">
-                        <i className="fas fa-envelope-square"></i> 
+                    <div className="inputDiv">
+                        <i className="fas fa-envelope-square"></i>
                         <input
                             className="Input"
                             type="email"
@@ -119,7 +119,7 @@ class Login extends Component {
                             onChange={this.handleInputChange}
                         />
                     </div>
-                    <div className="loginDiv">
+                    <div className="inputDiv">
                         <input
                             className="Input"
                             type="password"
@@ -138,72 +138,71 @@ class Login extends Component {
         )
 
         const Register = (
-            <form onSubmit={this.onRegistration} id="registerForm">
-                <h3>Register</h3>
-                <div className="form-group">
-                    <label htmlFor="fname">First Name:</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="First name"
-                        name="firstName"
-                        value={this.state.firstName}
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="fname">Last Name:</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Last name"
-                        name="lastName"
-                        value={this.state.lastName}
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="fname">Email:</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Email"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="fname">Password:</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        placeholder="Password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="fname">Phone Number: 123-123-1234</label>
-                    <input
-                        type="tel"
-                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                        className="form-control"
-                        placeholder="Cell, Home, or Work Phone Number"
-                        name="phoneNumber"
-                        value={this.state.phoneNumber}
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                </div>
-                <button type="submit" className="btn btn-success">Register</button>
-                <button type="button" className="btn btn-success" onClick={this.changeForm}>Return to Login</button>
-            </form>
+            <div>
+                <IntroNav />
+                <form onSubmit={this.onRegistration} id="Form">
+                    <h3>Register</h3>
+                    <div className="inputDiv">
+                        <input
+                            type="text"
+                            className="Input"
+                            placeholder="First name"
+                            name="firstName"
+                            value={this.state.firstName}
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className="inputDiv">
+                        <input
+                            type="text"
+                            className="Input"
+                            placeholder="Last name"
+                            name="lastName"
+                            value={this.state.lastName}
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className="inputDiv">
+                        <input
+                            type="email"
+                            className="Input"
+                            placeholder="Email"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className="inputDiv">
+                        <input
+                            type="password"
+                            className="Input"
+                            placeholder="Password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className="inputDiv">
+                        <input
+                            type="tel"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            className="Input"
+                            placeholder="Phone (XXX) XXX-XXXX"
+                            name="phoneNumber"
+                            value={this.state.phoneNumber}
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-success" id="registerBtn">Register</button>
+                    <button type="button" className="btn btn-success" id="registerBtn" onClick={this.changeForm}>Return to Login</button>
+                </form>
+            </div>
+
         )
 
         return (
