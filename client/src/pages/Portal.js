@@ -26,7 +26,7 @@ class Portal extends Component {
             <Container>
                 <Nav />
                 <Jumpotron>
-                    Welcome Resident!
+                    Welcome {this.state.currentUser.firstName}
                 </Jumpotron>
                 <Row>
                     <Col className="col-sm-6">

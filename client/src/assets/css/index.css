@@ -69,3 +69,19 @@ input[type=tel]::placeholder {
     padding: .8em 1em;
     /* background: rgba(255, 255, 255, 0.2): */
 }
+
+/* Portal Page */
+.card {
+    color: white;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    width: 90%;
+    display: inline-block;
+    background: transparent;
+    /* border-bottom: 2px solid white; */
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    box-shadow: -1px 4px 28px 0 rgba(0, 0, 0, 0.75);
+}

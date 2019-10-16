@@ -1,11 +1,10 @@
 import React from "react";
+import "../../assets/css/index.css"
 
 export function CardTitle({ children }) {
     return (
         <div className="card text-center">
-            <div style={{ backgroundColor: "#383838", color: "white" }}
-
-                className="card-body">
+            <div className="card-body">
                 <div className="card-title">{children}</div>
             </div>
         </div>
@@ -28,25 +27,25 @@ export function CardButton(props) {
     )
 }
 
-export function CardModel(props) {
-    return (
-        <div>
-            <button type="button" className="btn btn-success" data-toggle="modal">
-                {props.children}
-            </button>
+// export function CardModel(props) {
+//     return (
+//         <div>
+//             <button type="button" className="btn btn-success" data-toggle="modal">
+//                 {props.children}
+//             </button>
         
-            <div className="modal fade" tabindex="-1" role="dialog" aria-labelledby="emailFormModal" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Contact Us</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+//             <div className="modal fade" tabindex="-1" role="dialog" aria-labelledby="emailFormModal" aria-hidden="true">
+//                 <div className="modal-dialog" role="document">
+//                     <div className="modal-content">
+//                         <div className="modal-header">
+//                             <h5 className="modal-title">Contact Us</h5>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
 
 // export function Card (props) {
 //     return (
